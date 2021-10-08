@@ -7,6 +7,6 @@
 #pragma once
 #include <string>
 
-char shiftChar(char c, int rshift);
+char shiftChar(char l, int rshift);
 std::string encryptCaesar(std::string plaintext, int rshift);
 #endif //INC_6_CAESAR_H

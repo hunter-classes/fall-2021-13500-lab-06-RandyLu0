@@ -15,8 +15,7 @@ TEST_CASE("vigenere cipher"){
 TEST_CASE("decrypt caesar"){
     CHECK(decryptCaesar("Bfd yt Lt!",5) == "Way to Go!");
 }
-/*
+
 TEST_CASE("decrypt vigenere"){
     CHECK(decryptVigenere("Jevpq, Wyvnd!","cake") == "Hello, World!");
 }
- */

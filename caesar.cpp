@@ -9,13 +9,13 @@
 #include "caesar.h"
 #include <string>
 
-char shiftChar(char c, int rshift){
+char shiftChar(char l, int rshift){
     int s = rshift % 26;
-    if(c >= 65 and c <= 90 )
-        return (c+s) < 91 ? (c+s) : ((c + s) % 91 + 65);
-    else if(c >= 97 and c <= 122)
-        return (c+s) < 123 ? (c+s) : ((c + s) % 123 + 97);
-    return c % 128;
+    if(l >= 65 and l <= 90 )
+        return (l+s) < 91 ? (l+s) : (l + s) - 26;
+    if(l >= 97 and l <= 122)
+        return (l+s) < 123 ? (l+s) : (l + s) - 26;
+    return l;
 }
 
 std::string encryptCaesar(std::string plaintext, int rshift){

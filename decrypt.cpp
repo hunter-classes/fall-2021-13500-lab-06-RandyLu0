@@ -8,18 +8,29 @@
 
 #include "decrypt.h"
 #include <string>
-#include <cctype>
-char shift(char c, int s, std::string kw = ""){
+
+char shift(char c, int s){
     s %= 26;
-    if (kw == ""){
-        if(c >= 65 and c <= 90)
-            return (c-s) > 64 ? (c-s) : (25 + c - s));
-        else if(c >= 97 and c <= 122)
-            return (c-s) > 96 ? (c-s) : (25 + c - s);
-        return c % 128;
+    if(c >= 65 and c <= 90)
+        return (c-s) > 64 ? (c-s) : (26 + c - s);
+    else if(c >= 97 and c <= 122)
+        return (c-s) > 96 ? (c-s) : (26 + c - s);
+    return c;
+}
+
+char vshift(char c, std::string kw, int& s){
+    int d = kw[s] - 97;
+    if(c >= 65 and c <= 90){
+        s++;
+        return (c-d) < 91 ? (c-d) : (26 + c - d);
+    }
+    if(c >= 97 and c <= 122){
+        s++;
+        return (c-d) < 123 ? (c-d) : (26 + c - d);
     }
     return c;
 }
+
 std::string decryptCaesar(std::string ciphertext, int rshift){
     std::string a = "";
     for(auto c : ciphertext)
@@ -29,13 +40,11 @@ std::string decryptCaesar(std::string ciphertext, int rshift){
 
 std::string decryptVigenere(std::string ciphertext, std::string keyword){
     std::string a = "";
-    int c = 0;
+    int d = 0;
     int l = keyword.size();
     for(auto c : ciphertext){
-        if (isalpha(c))
-            a += c - keyword[c %l];
-        else
-            a += c;
+        d %= l;
+        a += vshift(c,keyword,d);
     }
     return a;
 }

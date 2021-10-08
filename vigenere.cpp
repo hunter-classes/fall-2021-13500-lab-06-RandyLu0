@@ -6,19 +6,21 @@
  * in vigenere.h
  */
 #include "vigenere.h"
+#include "caesar.h"
 #include <string>
 using std::string;
 
 char vShift(char c, std::string kw, int& shift){
     int s = kw[shift] - 97;
-    if(c >= 65 and c <= 90 ){
+    if(c >= 65 and c <= 90){
         shift++;
-        return (c+s) < 91 ? (c+s) : ((c + s) % 91 + 65);
-    }else if(c >= 97 and c <= 122){
-        shift++;
-        return (c+s) < 123 ? (c+s) : ((c + s) % 123 + 97);
+        return (c+s) < 91 ? (c+s) : (c + s) - 26;
     }
-    return c % 128;
+    if(c >= 97 and c <= 122){
+        shift++;
+        return (c+s) < 123 ? (c+s) : (c + s) - 26;
+    }
+    return c;
 }
 
 std::string encryptVigenere(std::string plaintext, std::string keyword){
