@@ -10,7 +10,7 @@
 #pragma once
 #include <string>
 
-char shift(char c, std::string kw = "", int s);
+char shift(char c, int s, std::string kw = "");
 std::string decryptCaesar(std::string ciphertext, int rshift);
 std::string decryptVigenere(std::string ciphertext, std::string keyword);
 

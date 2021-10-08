@@ -9,13 +9,21 @@
 #include "decrypt.h"
 #include <string>
 #include <cctype>
-char shift(char c, std::string kw = "", int s){
-    
+char shift(char c, int s, std::string kw = ""){
+    s %= 26;
+    if (kw == ""){
+        if(c >= 65 and c <= 90)
+            return (c-s) > 64 ? (c-s) : (25 + c - s));
+        else if(c >= 97 and c <= 122)
+            return (c-s) > 96 ? (c-s) : (25 + c - s);
+        return c % 128;
+    }
+    return c;
 }
 std::string decryptCaesar(std::string ciphertext, int rshift){
     std::string a = "";
     for(auto c : ciphertext)
-        a += c - rshift % 26;
+        a += shift(c,rshift);
     return a;
 }
 
