@@ -1,10 +1,10 @@
 * Fall 2021 - Lab 06
 
-* Last name:
+* Last name: Randy
 
-* First name:
+* First name: Lu
 
-* GitHub username:
+* GitHub username: RandyLu0
 
 * Notes:
 
