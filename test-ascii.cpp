@@ -17,8 +17,7 @@ int main(){
     std::string a;
     cout << "Input: ";
     getline(cin,a);
-    int s = a.size();
-    for (int i = 0; i < s; ++i)
-        cout << a[i] << " " << int(a[i]) << "\n";
+    for (auto x : a)
+        cout << x << " " << int(x) << "\n";
     return 0;
 }

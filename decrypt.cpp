@@ -22,11 +22,11 @@ char vshift(char c, std::string kw, int& s){
     int d = kw[s] - 97;
     if(c >= 65 and c <= 90){
         s++;
-        return (c-d) < 91 ? (c-d) : (26 + c - d);
+        return (c-d) > 64 ? (c-d) : (26 + c - d);
     }
     if(c >= 97 and c <= 122){
         s++;
-        return (c-d) < 123 ? (c-d) : (26 + c - d);
+        return (c-d) > 96 ? (c-d) : (26 + c - d);
     }
     return c;
 }
